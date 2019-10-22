@@ -45,19 +45,22 @@ df = pd.read_csv("{}weather-raw.csv".format(path), header=None, index_col=0, nam
 
 # In[76]:
 
-cols = []
+def column_factors(df):
 
-for i in range(len(df.columns)):
-    factor = re.findall("\d+", df.columns[i])
-    col_name = df.columns[i]
-    if factor:
-        factor = int(factor[0])
-        cols.append(col_name)
-        var_name = re.split("_1", col_name)[0]
-        df[var_name] = df[col_name] / factor
-df.drop(columns=cols, inplace=True)
+    cols = []
+
+    for i in range(len(df.columns)):
+        factor = re.findall("\d+", df.columns[i])
+        col_name = df.columns[i]
+        if factor:
+            factor = int(factor[0])
+            cols.append(col_name)
+            var_name = re.split("_1", col_name)[0]
+            df[var_name] = df[col_name] / factor
+    df.drop(columns=cols, inplace=True)
 
 #%%
+column_factors(df)
 df.index = pd.to_datetime(df.index)
 
 
@@ -91,7 +94,6 @@ plotmax_dict = {
 st_date = dt.date(2018,1,1)
 ed_date = dt.date(2019,1,1)
 
-
 fig, axs = plt.subplots(nrows=len(df.columns), ncols=1, sharex=False, figsize=(20,30))  
 fig.subplots_adjust(hspace=0.5)
 
@@ -105,4 +107,5 @@ for i in range(len(df.columns)):
     ax.set_ylabel(var_dict[col_name])
     ax.set_title("{} timeseries".format(col_name))
 
+plt.show()
 
