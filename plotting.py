@@ -12,10 +12,9 @@ from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 import datetime as dt
 
-data_file = "data_tidy.csv"
+data_file = "/home/mwlw3/Documents/Git_class/weather-fun/data_tidy.csv"
 df = pandas.read_csv(data_file, index_col=0)
-
-
+#%%
 var_dict = {
         "humidity": "Humidity (%)",
         "pressure": "Pressure (mBar)",
@@ -39,7 +38,7 @@ plotmax_dict = {
         "rainfall": 10,
         "max_wind_speed": 80
         }
-
+#%%
 st_date = dt.date(2018,1,1)
 ed_date = dt.date(2019,1,1)
 
