@@ -12,9 +12,11 @@ data_file = "data.csv"
 if not os.path.exists(data_file):
 	save_csv_from_url(url, data_file)
 
+#Add heathers to the dataset
 headers = ["Timestamp","Temperature","Humidity","DewPoint","Pressure",
 		   "MeanWindSpeed","WindBearing","Sunshine","Rainfall","MaxWindSpeed"]
 
+#Import CSV file as Pandas Dataframe 
 df = pandas.read_csv(data_file, names=headers)
 df['Timestamp'] = pandas.to_datetime(df['Timestamp'])
 df['Temperature'] = pandas.to_numeric(df['Temperature'])
