@@ -34,7 +34,6 @@ df[['MeanWindSpeed', 'MaxWindSpeed']] *= 0.1 * 0.514444  # to m/s
 df['Sunshine'] *= 0.01  # to hours
 df['Rainfall'] *= 1e-3  # to mm
 
-
 df = df.resample('D')
 
 print(df)
