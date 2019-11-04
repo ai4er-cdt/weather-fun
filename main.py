@@ -23,6 +23,7 @@ df['Timestamp'] = pandas.to_datetime(df['Timestamp'])
 df['Temperature'] = pandas.to_numeric(df['Temperature'])
 df = df.set_index('Timestamp')
 
+#Resample dataframe to daily values
 df = df.resample('D')
 
 print(df)
