@@ -24,10 +24,12 @@ df = df.set_index('Timestamp')
 #functions to normalize the sun and wind
 from normalise_functions import normalize_sun
 from normalise_functions import normalize_wind
+from normalise_functions import normalize_rain
 
 
 df = normalize_sun(df)
 df = normalize_wind(df)
+df = normalize_rain(df)
 
 df = df.resample('D')
 

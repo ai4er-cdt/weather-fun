@@ -16,5 +16,11 @@ def normalize_wind(df):
     max_value = df["MaxWindSpeed"].max()
     min_value = df["MaxWindSpeed"].min()
     result["MaxWindSpeed"] = (df["MaxWindSpeed"] - min_value) / (max_value - min_value)
-    
+    return result
+
+def normalize_rain(df):
+    result = df.copy()
+    max_value = df["Rainfall"].max()
+    min_value = df["Rainfall"].min()
+    result["Rainfall"] = (df["Rainfall"]-min_value) / (max_value - min_value)
     return result
