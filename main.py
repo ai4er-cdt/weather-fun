@@ -1,3 +1,4 @@
+#Import packages
 import requests
 import csv
 import pandas
@@ -16,7 +17,7 @@ if not os.path.exists(data_file):
 headers = ["Timestamp","Temperature","Humidity","DewPoint","Pressure",
 		   "MeanWindSpeed","WindBearing","Sunshine","Rainfall","MaxWindSpeed"]
 
-#Import CSV file as Pandas Dataframe 
+#Import CSV file as Pandas Dataframe
 df = pandas.read_csv(data_file, names=headers)
 df['Timestamp'] = pandas.to_datetime(df['Timestamp'])
 df['Temperature'] = pandas.to_numeric(df['Temperature'])
